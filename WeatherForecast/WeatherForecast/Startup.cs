@@ -23,14 +23,14 @@ namespace WeatherApp
         {
             services.AddDbContext<WeatherDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddControllersWithViews();
             services.AddScoped<AccuWeatherService>();
             services.AddScoped<WeatherService>();
             services.AddHttpClient<AccuWeatherService>();
             services.AddScoped<AuthService>();
+            services.AddScoped<UserService>();
+            
 
             services.AddControllers();
         }

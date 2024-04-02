@@ -109,3 +109,4 @@
 /Users/lorenataddeo/Project/new_project/WeatherForecast/WeatherForecast/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/lorenataddeo/Project/new_project/WeatherForecast/WeatherForecast/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
 /Users/lorenataddeo/Project/new_project/WeatherForecast/WeatherForecast/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/Users/lorenataddeo/Project/new_project/WeatherForecast/WeatherForecast/obj/Debug/net8.0/WeatherForecast.sourcelink.json
