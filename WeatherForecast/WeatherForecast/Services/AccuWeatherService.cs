@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 using WeatherForecast.Models;
 
 namespace WeatherApp.Services
@@ -6,16 +7,17 @@ namespace WeatherApp.Services
     public class AccuWeatherService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiKey = "1qHtKoi2jxfm2nEHPBjHGglrrcepxPUb";
+        private readonly string _apiKey;
 
-        public AccuWeatherService(HttpClient httpClient)
+        public AccuWeatherService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
+            _apiKey = configuration["AccuWeather:ApiKey"];
         }
 
         public async Task<WeatherFor> GetWeatherFor(string location)
         {
-            string apiUrl = $"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={ApiKey}&q={location}";
+            string apiUrl = $"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={_apiKey}&q={location}";
 
             HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
@@ -29,7 +31,7 @@ namespace WeatherApp.Services
                 {
                     string locationKey = locations[0].Key;
 
-                    string forecastUrl = $"http://dataservice.accuweather.com/forecasts/v1/daily/1day/{locationKey}?apikey={ApiKey}";
+                    string forecastUrl = $"http://dataservice.accuweather.com/forecasts/v1/daily/1day/{locationKey}?apikey={_apiKey}";
 
                     HttpResponseMessage forecastResponse = await _httpClient.GetAsync(forecastUrl);
 
